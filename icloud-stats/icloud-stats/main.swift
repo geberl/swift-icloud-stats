@@ -102,5 +102,41 @@ func walkDir(basePath: String) {
     print("  Number of directories:  ", numberOfDirs)
     print("  Number of files:        ", numberOfFiles)
     print("  Number of hidden files: ", numberOfHiddenFiles)
-    print("  Total size of files:    ", sizeOfFiles)
+    print("  Total size of files:    ", getSizeString(byteCount: sizeOfFiles))
+}
+
+extension String {
+    func deletingPrefix(_ prefix: String) -> String {
+        guard self.hasPrefix(prefix) else { return self }
+        return String(self.dropFirst(prefix.count))
+    }
+}
+
+func getSizeString(byteCount: Int64) -> String {
+    // Get a human readable size string according to user preferences.
+    
+    let unit: String = "all"
+    
+    if byteCount == 0 {
+        if unit == "all" {
+            return "0 bytes"
+        }
+        return "0 " + unit
+    }
+    
+    let byteCountFormatter = ByteCountFormatter()
+    if unit == "bytes" {
+        byteCountFormatter.allowedUnits = .useBytes
+    } else if unit == "KB" {
+        byteCountFormatter.allowedUnits = .useKB
+    } else if unit == "MB" {
+        byteCountFormatter.allowedUnits = .useMB
+    } else if unit == "GB" {
+        byteCountFormatter.allowedUnits = .useGB
+    } else {
+        byteCountFormatter.allowedUnits = .useAll
+    }
+    byteCountFormatter.countStyle = .file
+    
+    return byteCountFormatter.string(fromByteCount: byteCount)
 }

@@ -30,12 +30,28 @@ let command = Command(usage: "icloud-stats", flags: [version, srcPath]) { flags,
         return
     }
     
+    var basePath: String?
     if let validSrcPath = flags.getString(name: "source") {
-        walkDir(basePath: validSrcPath)
-        return
+        basePath = validSrcPath
+    } else {
+        do {
+            let documentsUrl = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask,
+                                                           appropriateFor: nil, create: false)
+            basePath = documentsUrl.absoluteString
+            basePath = basePath!.deletingPrefix("file://")
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     
-    print("You passed \(args) to your Guaka app!")
+    if let validBasePath = basePath {
+        walkDir(basePath: validBasePath)
+        // print("Walk dir now", validBasePath)
+    } else {
+        print("No base path to walk")
+    }
+    
+    // print("You passed \(args) to your Guaka app!")
 }
 
 command.execute()

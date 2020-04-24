@@ -37,8 +37,7 @@ let command = Command(usage: "icloud-stats", flags: [version, srcPath]) { flags,
         do {
             let documentsUrl = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask,
                                                            appropriateFor: nil, create: false)
-            basePath = documentsUrl.absoluteString
-            basePath = basePath!.deletingPrefix("file://")
+            basePath = documentsUrl.path
         } catch {
             print(error.localizedDescription)
         }
@@ -62,8 +61,9 @@ func walkDir(basePath: String) {
     var numberOfDirs = 0
     var numberOfFiles = 0
     var numberOfHiddenFiles = 0
-    // var numberOfPlaceholders = 0
+    var numberOfPlaceholders = 0
     var sizeOfFiles: Int64 = 0
+    var sizeOfPlacholderContent: Int64 = 0
     
     let fileManager = FileManager.default
     guard let enumerator: FileManager.DirectoryEnumerator = fileManager.enumerator(atPath: basePath) else {
@@ -85,6 +85,13 @@ func walkDir(basePath: String) {
         }
         sizeOfFiles += fileSize
         
+        if let fileType: String = elementURL.typeIdentifier {
+            if fileType == "com.apple.icloud-file-fault" {
+                numberOfPlaceholders += 1
+                sizeOfPlacholderContent += getSizeOfPlaceholderContent(url: elementURL)
+            }
+        }
+        
         if let values = try? elementURL.resourceValues(forKeys: [.isDirectoryKey]) {
             if values.isDirectory! {
                 numberOfDirs += 1
@@ -98,17 +105,29 @@ func walkDir(basePath: String) {
         }
     }
     
-    print("Results:")
-    print("  Number of directories:  ", numberOfDirs)
-    print("  Number of files:        ", numberOfFiles)
-    print("  Number of hidden files: ", numberOfHiddenFiles)
-    print("  Total size of files:    ", getSizeString(byteCount: sizeOfFiles))
+    print("Count:")
+    print("  Number of directories:       ", numberOfDirs)
+    print("  Number of downloaded files:  ", numberOfFiles)
+    print("  Number of placeholder files: ", numberOfPlaceholders)
+    print("  Number of hidden files:      ", numberOfHiddenFiles)
+    print("  Total:                       ", numberOfDirs + numberOfFiles + numberOfPlaceholders + numberOfHiddenFiles)
+    print("Size:")
+    print("  Downloaded:                  ", getSizeString(byteCount: sizeOfFiles))
+    print("  In placeholders:             ", getSizeString(byteCount: sizeOfPlacholderContent))
+    print("  Total:                       ", getSizeString(byteCount: sizeOfFiles + sizeOfPlacholderContent))
+    print("")
 }
 
 extension String {
     func deletingPrefix(_ prefix: String) -> String {
         guard self.hasPrefix(prefix) else { return self }
         return String(self.dropFirst(prefix.count))
+    }
+}
+
+extension URL {
+    var typeIdentifier: String? {
+        return (try? resourceValues(forKeys: [.typeIdentifierKey]))?.typeIdentifier
     }
 }
 
@@ -139,4 +158,22 @@ func getSizeString(byteCount: Int64) -> String {
     byteCountFormatter.countStyle = .file
     
     return byteCountFormatter.string(fromByteCount: byteCount)
+}
+
+func getSizeOfPlaceholderContent(url: URL) -> Int64 {
+    guard let xml = FileManager.default.contents(atPath: url.path) else {
+        print(url)
+        return 0
+    }
+  
+    if let plist = try? PropertyListDecoder().decode(iCloudPlist.self, from: xml) {
+        return plist.NSURLFileSizeKey
+    }
+    return 0
+}
+
+struct iCloudPlist: Codable {
+    var NSURLFileResourceTypeKey: String
+    var NSURLFileSizeKey: Int64
+    var NSURLNameKey: String
 }

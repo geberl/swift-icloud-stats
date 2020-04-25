@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		A44AFB48244F5E0900990320 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44AFB47244F5E0900990320 /* main.swift */; };
 		A44AFB50244F5F3000990320 /* Guaka in Frameworks */ = {isa = PBXBuildFile; productRef = A44AFB4F244F5F3000990320 /* Guaka */; };
+		A4561127245419C500EE07BF /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4561126245419C500EE07BF /* extensions.swift */; };
+		A4561129245419FA00EE07BF /* walk.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4561128245419FA00EE07BF /* walk.swift */; };
+		A456112B24541A3D00EE07BF /* placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A456112A24541A3D00EE07BF /* placeholder.swift */; };
+		A456112D24541AE800EE07BF /* results.swift in Sources */ = {isa = PBXBuildFile; fileRef = A456112C24541AE800EE07BF /* results.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,6 +30,10 @@
 /* Begin PBXFileReference section */
 		A44AFB44244F5E0900990320 /* icloud-stats */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "icloud-stats"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A44AFB47244F5E0900990320 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		A4561126245419C500EE07BF /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
+		A4561128245419FA00EE07BF /* walk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = walk.swift; sourceTree = "<group>"; };
+		A456112A24541A3D00EE07BF /* placeholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = placeholder.swift; sourceTree = "<group>"; };
+		A456112C24541AE800EE07BF /* results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = results.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +68,10 @@
 			isa = PBXGroup;
 			children = (
 				A44AFB47244F5E0900990320 /* main.swift */,
+				A456112C24541AE800EE07BF /* results.swift */,
+				A4561126245419C500EE07BF /* extensions.swift */,
+				A4561128245419FA00EE07BF /* walk.swift */,
+				A456112A24541A3D00EE07BF /* placeholder.swift */,
 			);
 			path = "icloud-stats";
 			sourceTree = "<group>";
@@ -128,7 +140,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A456112D24541AE800EE07BF /* results.swift in Sources */,
+				A4561129245419FA00EE07BF /* walk.swift in Sources */,
 				A44AFB48244F5E0900990320 /* main.swift in Sources */,
+				A4561127245419C500EE07BF /* extensions.swift in Sources */,
+				A456112B24541A3D00EE07BF /* placeholder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

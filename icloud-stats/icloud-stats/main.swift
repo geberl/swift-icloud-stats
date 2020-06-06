@@ -7,30 +7,30 @@
 //
 
 import Foundation
-import Guaka
-
-// Docs: https://github.com/nsomar/Guaka
-// And: https://getguaka.github.io/index.html
+import ArgumentParser
 
 // e.g. run like this: ./icloud-stats --src="/Users/guenther/Downloads/"
 
-let version = Flag(shortName: "v",
-                   longName: "version",
-                   value: false,
-                   description: "Print version and exit")
+// https://github.com/apple/swift-argument-parser
 
-let srcPath = Flag(shortName: "src",
-                   longName: "source",
-                   type: String.self,
-                   description: "Override source path")
+struct CloudStatsOptions: ParsableArguments {
+    @Flag(name: .long, help: "Print version and exit.")
+    var version: Bool
+    
+    @Option(default: "",
+            help: ArgumentHelp("Override source path.", valueName: "path"))
+    var src: String
+    
+    // --help is automatically included
+}
 
-let command = Command(usage: "icloud-stats", flags: [version, srcPath]) { flags, args in
-    if let hasVersion = flags.getBool(name: "version"), hasVersion == true {
-        print("Version is 0.0.1")
-        return
-    }
+let options = CloudStatsOptions.parseOrExit()
 
-    //if let validSrcPath = flags.getString(name: "source") {
+if options.version == true {
+    print("Version is 0.0.2")
+} else {
+
+    //if let validSrcPath = options.src {
     //    basePath = validSrcPath
     // }
 
@@ -112,8 +112,3 @@ let command = Command(usage: "icloud-stats", flags: [version, srcPath]) { flags,
 
     // print("You passed \(args) to your Guaka app!")
 }
-
-command.execute()
-
-
-

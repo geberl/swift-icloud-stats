@@ -35,7 +35,7 @@ func printDirStats(overall: dirOverall, stats: dirStats) {
 }
 
 func printTotalStats(overall: dirOverall) {
-    var total: String = ""
+    var total: String = "\n"
     total += "TOTAL".rPad(toLength: overall.maxLengthPath + 3, withPad: " ")
     total += String(overall.totalDirs).rPad(toLength: overall.maxLengthDirs + 3, withPad: " ")
     total += String(overall.totalFiles).rPad(toLength: overall.maxLengthFiles + 3, withPad: " ")

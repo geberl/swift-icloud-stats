@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		A44AFB48244F5E0900990320 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44AFB47244F5E0900990320 /* main.swift */; };
-		A44AFB50244F5F3000990320 /* Guaka in Frameworks */ = {isa = PBXBuildFile; productRef = A44AFB4F244F5F3000990320 /* Guaka */; };
 		A4561127245419C500EE07BF /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4561126245419C500EE07BF /* extensions.swift */; };
 		A4561129245419FA00EE07BF /* walk.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4561128245419FA00EE07BF /* walk.swift */; };
 		A456112B24541A3D00EE07BF /* placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A456112A24541A3D00EE07BF /* placeholder.swift */; };
 		A456112D24541AE800EE07BF /* results.swift in Sources */ = {isa = PBXBuildFile; fileRef = A456112C24541AE800EE07BF /* results.swift */; };
+		A4EAD0022488C40B009EFE3C /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = A4EAD0012488C40B009EFE3C /* ArgumentParser */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,7 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A44AFB50244F5F3000990320 /* Guaka in Frameworks */,
+				A4EAD0022488C40B009EFE3C /* ArgumentParser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,7 +93,7 @@
 			);
 			name = "icloud-stats";
 			packageProductDependencies = (
-				A44AFB4F244F5F3000990320 /* Guaka */,
+				A4EAD0012488C40B009EFE3C /* ArgumentParser */,
 			);
 			productName = "icloud-stats";
 			productReference = A44AFB44244F5E0900990320 /* icloud-stats */;
@@ -106,7 +106,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1140;
-				LastUpgradeCheck = 1140;
+				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = "Günther Eberl";
 				TargetAttributes = {
 					A44AFB43244F5E0800990320 = {
@@ -124,7 +124,7 @@
 			);
 			mainGroup = A44AFB3B244F5E0800990320;
 			packageReferences = (
-				A44AFB4E244F5F3000990320 /* XCRemoteSwiftPackageReference "Guaka" */,
+				A4EAD0002488C40B009EFE3C /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
 			);
 			productRefGroup = A44AFB45244F5E0900990320 /* Products */;
 			projectDirPath = "";
@@ -267,6 +267,7 @@
 		A44AFB4C244F5E0900990320 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QEZ83PUW72;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -279,6 +280,7 @@
 		A44AFB4D244F5E0900990320 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QEZ83PUW72;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -312,21 +314,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		A44AFB4E244F5F3000990320 /* XCRemoteSwiftPackageReference "Guaka" */ = {
+		A4EAD0002488C40B009EFE3C /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/nsomar/Guaka.git";
+			repositoryURL = "https://github.com/apple/swift-argument-parser";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.4.1;
+				minimumVersion = 0.1.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		A44AFB4F244F5F3000990320 /* Guaka */ = {
+		A4EAD0012488C40B009EFE3C /* ArgumentParser */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A44AFB4E244F5F3000990320 /* XCRemoteSwiftPackageReference "Guaka" */;
-			productName = Guaka;
+			package = A4EAD0002488C40B009EFE3C /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = ArgumentParser;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

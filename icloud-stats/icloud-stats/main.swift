@@ -98,17 +98,9 @@ if options.version == true {
             overall.stats.append(childStats)
         }
         
-        printHeadline(overall: overall)
-        for stats in overall.stats {
-            printDirStats(overall: overall, stats: stats)
-        }
-        printTotalStats(overall: overall)
-        
-        print("")
+        printStats(overall: overall)
 
     } catch {
         print(error.localizedDescription)
     }
-
-    // print("You passed \(args) to your Guaka app!")
 }

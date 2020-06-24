@@ -14,13 +14,8 @@ import ArgumentParser
 // https://github.com/apple/swift-argument-parser
 
 struct CloudStatsOptions: ParsableArguments {
-    @Flag(name: .long, help: "Print version and exit.")
-    var version: Bool
-    
-    @Option(default: "",
-            help: ArgumentHelp("Override source path.", valueName: "path"))
-    var src: String
-    
+    @Flag(name: .long, help: "Print version and exit.") var version = false
+    @Option(help: ArgumentHelp("Override source path.", valueName: "path")) var src = ""
     // --help is automatically included
 }
 

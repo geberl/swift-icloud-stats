@@ -30,7 +30,7 @@ func printHeadline(overall: dirOverall) {
     headline += "SIZE".rPad(toLength: overall.maxLengthSizeFiles + 3, withPad: " ")
     headline += "OFFLOADED".rPad(toLength: overall.maxLengthSizeOffloaded + 3, withPad: " ")
     headline += "TOTAL".rPad(toLength: overall.maxLengthTotal + 6, withPad: " ")
-    headline += "TOTAL-%"
+    headline += "PERCENT"
     print(headline)
 }
 
@@ -58,7 +58,7 @@ func printTotalStats(overall: dirOverall) {
     total += getSizeString(byteCount: overall.totalSizeFiles).rPad(toLength: overall.maxLengthSizeFiles + 3, withPad: " ")
     total += getSizeString(byteCount: overall.totalSizeOffloaded).rPad(toLength: overall.maxLengthSizeOffloaded + 3, withPad: " ")
     total += getSizeString(byteCount: overall.totalSizeFiles + overall.totalSizeOffloaded).rPad(toLength: overall.maxLengthTotal + 6, withPad: " ")
-    total += "100.0 %"
+    total += "100.0"
     print(total)
 }
 
@@ -93,5 +93,5 @@ func getSizeString(byteCount: Int64) -> String {
 
 func getPercentString(bytesDir: Int64, bytesTotal: Int64) -> String {
     let percent = ( Float(bytesDir) / Float(bytesTotal) ) * 100
-    return String(format: "%2.1f", arguments: [percent]) + " %"
+    return String(format: "%2.1f", arguments: [percent])
 }

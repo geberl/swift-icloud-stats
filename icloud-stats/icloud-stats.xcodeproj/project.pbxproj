@@ -106,7 +106,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1140;
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "Günther Eberl";
 				TargetAttributes = {
 					A44AFB43244F5E0800990320 = {
@@ -177,6 +177,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -237,6 +238,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -323,7 +325,7 @@
 			repositoryURL = "https://github.com/apple/swift-argument-parser";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.2.0;
+				minimumVersion = 0.3.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

@@ -10,11 +10,14 @@
 ## Usage
 
 ```shell
-# Simple
+# Scan and show stats
 ./icloud-stats
 
-# Overriding source path
-./icloud-stats --src="/Users/guenther/Downloads/"
+# Show auto-detected documents directory
+./icloud-stats --show-src
+
+# Scan and show stats of another directory
+./icloud-stats --src "/Users/guenther/Downloads/"
 
 # Show help
 ./icloud-stats --help

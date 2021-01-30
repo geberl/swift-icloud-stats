@@ -15,7 +15,8 @@ import ArgumentParser
 
 struct CloudStatsOptions: ParsableArguments {
     @Flag(name: .long, help: "Print version and exit.") var version = false
-    @Option(help: ArgumentHelp("Override source path.", valueName: "path")) var src = ""
+    @Flag(name: .long, help: "Show auto-detected source path and exit.") var showSrc = false
+    @Option(help: ArgumentHelp("Override the source path.", valueName: "path")) var src = ""
     // --help is automatically included
 }
 
@@ -23,6 +24,12 @@ let options = CloudStatsOptions.parseOrExit()
 
 if options.version == true {
     print("Version is 0.0.2")
+} else if options.showSrc == true {
+    let documentsUrl = try FileManager.default.url(for: .documentDirectory,
+                                                   in: .userDomainMask,
+                                                   appropriateFor: nil,
+                                                   create: false)
+    print(documentsUrl.path.deletingPrefix("file://"))
 } else {
 
     //if let validSrcPath = options.src {

@@ -31,18 +31,31 @@ if options.version == true {
                                                    create: false)
     print(documentsUrl.path.deletingPrefix("file://"))
 } else {
-
-    //if let validSrcPath = options.src {
-    //    basePath = validSrcPath
-    // }
-
-    do {
-        let documentsUrl = try FileManager.default.url(for: .documentDirectory,
-                                                       in: .userDomainMask,
-                                                       appropriateFor: nil,
-                                                       create: false)
-
-        let childDirs = getChildDirs(url: documentsUrl)
+    var scanUrl: URL?
+    let fileManager = FileManager.default
+    
+    if options.src != "" {
+        var isDir : ObjCBool = true
+        if fileManager.fileExists(atPath: options.src, isDirectory:&isDir) {
+            scanUrl = URL(string: options.src)
+        } else {
+            print("Source path does not exist")
+            exit(1)
+        }
+    } else {
+        do {
+            scanUrl = try FileManager.default.url(for: .documentDirectory,
+                                                  in: .userDomainMask,
+                                                  appropriateFor: nil,
+                                                  create: false)
+        } catch {
+            print(error.localizedDescription)
+            exit(1)
+        }
+    }
+    
+    if let safeScanUrl = scanUrl {
+        let childDirs = getChildDirs(url: safeScanUrl)
         var overall = dirOverall(maxLengthPath: "PATH".count,
                                  maxLengthDirs: "DIRS".count,
                                  maxLengthFiles: "FILES".count,
@@ -101,8 +114,5 @@ if options.version == true {
         }
         
         printStats(overall: overall)
-
-    } catch {
-        print(error.localizedDescription)
     }
 }

@@ -61,7 +61,15 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--show-src"
-            isEnabled = "YES">
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "--src &quot;/Users/guenther/Development&quot;"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "--src &quot;/Users/guenther/DoesNotExist&quot;"
+            isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>
    </LaunchAction>

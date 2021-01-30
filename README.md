@@ -1,6 +1,6 @@
 # swift-icloud-stats
 
-*A macOS  terminal app that shows stats about your iCloud Documents*
+*A macOS  terminal app that shows stats about your iCloud Documents directory*
 
 ![Swift](https://img.shields.io/badge/swift-5.3-brightgreen.svg)
 ![Xcode](https://img.shields.io/badge/xcode-12.4-brightgreen.svg)
@@ -32,3 +32,9 @@
 ## Dependencies
 
 - [https://github.com/apple/swift-argument-parser](https://github.com/apple/swift-argument-parser)
+
+## Why?
+
+- Offloaded files only exist as a placeholder `*.plist` files on your drive
+- These files only have a few bytes
+- Because of this tools like **DaisyDisk** are of no use to identify big files or get an overview about your space usage

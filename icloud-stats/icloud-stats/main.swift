@@ -9,10 +9,6 @@
 import Foundation
 import ArgumentParser
 
-// e.g. run like this: ./icloud-stats --src="/Users/guenther/Downloads/"
-
-// https://github.com/apple/swift-argument-parser
-
 struct CloudStatsOptions: ParsableArguments {
     @Flag(name: .long, help: "Print version and exit.") var version = false
     @Flag(name: .long, help: "Show auto-detected source path and exit.") var showSrc = false
@@ -23,7 +19,7 @@ struct CloudStatsOptions: ParsableArguments {
 let options = CloudStatsOptions.parseOrExit()
 
 if options.version == true {
-    print("Version is 0.0.2")
+    print("Version 1.0.0")
 } else if options.showSrc == true {
     let documentsUrl = try FileManager.default.url(for: .documentDirectory,
                                                    in: .userDomainMask,

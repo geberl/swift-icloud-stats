@@ -63,8 +63,6 @@ func printTotalStats(overall: dirOverall) {
 }
 
 func getSizeString(byteCount: Int64) -> String {
-    // Get a human readable size string according to user preferences.
-    
     let unit: String = "all"
     
     if byteCount == 0 {
